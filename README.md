@@ -1,3 +1,4 @@
 # stopwatch
-! Under Construction ! 
+! Under Construction !
+
 My first try to make a GUI app
