@@ -1,4 +1,5 @@
 import customtkinter as ctk
+import threading
 import time
 
 
@@ -19,18 +20,27 @@ class App:
         self.button.place(relx=0.5, rely=0.6, anchor='center')
 
     def start_count(self):
+        # Создаем новый поток для выполнения метода count_time()
+        t = threading.Thread(target=self.count_time)
+        t.start()
+
+    def count_time(self):
         start_time = time.time() * 100
         while True:
             try:
                 current_time = time.time() * 100
                 elapsed_time = current_time - start_time
                 self.time_gone = round(elapsed_time)
-                print(self.time_gone)
-                self.label.configure(text=str(self.time_gone))
+                # Обновляем интерфейс в главном потоке программы
+                self.master.after(10, self.update_label)
                 time.sleep(0.01)  # ждем 1 сотую секунды
 
             except Exception as exc:
                 print(f'Ошибка: {exc}')
+
+    def update_label(self):
+        # Обновляем метку на форме
+        self.label.configure(text=str(self.time_gone))
 
 
 if __name__ == '__main__':
