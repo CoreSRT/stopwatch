@@ -34,7 +34,6 @@ class App:
                 # Обновляем интерфейс в главном потоке программы
                 self.master.after(10, self.update_label)
                 time.sleep(0.01)  # ждем 1 сотую секунды
-
             except Exception as exc:
                 print(f'Ошибка: {exc}')
 
