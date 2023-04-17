@@ -10,7 +10,7 @@ class App:
         self.master.geometry('350x300')
         self.master.resizable(False, False)
         self.master.title('Секундомер')
-        self.time_gone = 0  # Начиная с нуля
+        self.time_gone = 0  # Starting from zero
         self.tumbler = False  # При запуске программы время на паузе
 
         # Цифра, которая должна показывать сотые:
@@ -21,18 +21,19 @@ class App:
         self.button.place(relx=0.5, rely=0.6, anchor='center')
 
     def start_count(self):
-        # Создаем новый поток для выполнения метода count_time()
+        """The function for creating a new thread. Not used at the time"""
         t = threading.Thread(target=self.count_time)
         t.start()
 
     def tumbler_switch(self):
+        """The function to make the time tumbler True or False. (To make time running or frozen)"""
         t = threading.Thread(target=self.count_time)
         if self.tumbler:
             self.tumbler = False
-            print('Тумблер выключен')
+            print('Tumbler down')  # This makes the timer refreshed that I didn't mean, but I'm working on it
         else:
             self.tumbler = True
-            print('Тумблер включен')
+            print('Tumbler up')
             t.start()
 
     def count_time(self):
