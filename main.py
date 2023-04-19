@@ -1,6 +1,7 @@
 import customtkinter as ctk
 import threading
 import time
+import stopwatch
 
 
 class App:
@@ -13,10 +14,10 @@ class App:
         self.time_gone = 0  # Starting from zero
         self.tumbler = False  # Is paused when the program starts
 
-        # Цифра, которая должна показывать сотые:
+        # The digit that shows us hundredths of seconds:
         self.label = ctk.CTkLabel(self.master, text=str(self.time_gone), font=('Arial bold', 50))
         self.label.place(relx=0.5, rely=0.4, anchor='center')  # 0 to 1
-        # Кнопка старта:
+        # The start button:
         self.button = ctk.CTkButton(self.master, text='Start', command=self.tumbler_switch, corner_radius=40)
         self.button.place(relx=0.5, rely=0.6, anchor='center')
 
