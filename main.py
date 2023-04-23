@@ -22,12 +22,12 @@ class App:
         self.button.place(relx=0.5, rely=0.6, anchor='center')
 
     def start_count(self):
-        """The function for creating a new thread. Not used at the time"""
+        """ The function for creating a new thread. Not used at the time """
         t = threading.Thread(target=self.count_time)
         t.start()
 
     def tumbler_switch(self):
-        """The function to make the time tumbler True or False. (To make time running or frozen)"""
+        """ The function to make the time tumbler True or False. (To make time running or frozen) """
         t = threading.Thread(target=self.count_time)
         if self.tumbler:
             self.tumbler = False
