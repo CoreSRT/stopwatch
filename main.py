@@ -48,7 +48,7 @@ class App:
                 self.master.after(10, self.update_label)
                 time.sleep(0.01)  # waiting a 100'th of second
             except Exception as exc:
-                print(f'Ошибка: {exc}')
+                print(f'Error: {exc}')
 
     def update_label(self):
         # refreshing the lable that's showing time
